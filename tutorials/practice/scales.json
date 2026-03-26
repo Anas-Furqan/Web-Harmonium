@@ -1,0 +1,33 @@
+{
+    "id": "scales",
+    "meta": {
+        "title": "Basic Scales",
+        "artist": "Practice",
+        "difficulty": "beginner",
+        "category": "practice",
+        "defaultTempo": 60,
+        "description": "Learn the basic Sa Re Ga Ma Pa Dha Ni Sa scale"
+    },
+    "sections": [
+        { "name": "Ascending", "startIndex": 0 },
+        { "name": "Descending", "startIndex": 8 }
+    ],
+    "notes": [
+        { "swara": "S", "midi": 60, "duration": 1, "lyrics": "Sa" },
+        { "swara": "R", "midi": 62, "duration": 1, "lyrics": "Re" },
+        { "swara": "G", "midi": 64, "duration": 1, "lyrics": "Ga" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "Ma" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "Pa" },
+        { "swara": "D", "midi": 69, "duration": 1, "lyrics": "Dha" },
+        { "swara": "N", "midi": 71, "duration": 1, "lyrics": "Ni" },
+        { "swara": "S'", "midi": 72, "duration": 2, "lyrics": "Sa'" },
+        { "swara": "S'", "midi": 72, "duration": 1, "lyrics": "Sa'" },
+        { "swara": "N", "midi": 71, "duration": 1, "lyrics": "Ni" },
+        { "swara": "D", "midi": 69, "duration": 1, "lyrics": "Dha" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "Pa" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "Ma" },
+        { "swara": "G", "midi": 64, "duration": 1, "lyrics": "Ga" },
+        { "swara": "R", "midi": 62, "duration": 1, "lyrics": "Re" },
+        { "swara": "S", "midi": 60, "duration": 2, "lyrics": "Sa" }
+    ]
+}

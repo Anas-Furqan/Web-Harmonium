@@ -1,0 +1,34 @@
+{
+    "id": "arz-kiya-hai",
+    "meta": {
+        "title": "Arz Kiya Hai",
+        "artist": "Anuv Jain",
+        "difficulty": "beginner",
+        "category": "indie",
+        "defaultTempo": 70,
+        "description": "Beautiful intro melody from Anuv Jain's hit song"
+    },
+    "sections": [
+        { "name": "Intro", "startIndex": 0 },
+        { "name": "Verse", "startIndex": 8 }
+    ],
+    "notes": [
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "Arz" },
+        { "swara": "D", "midi": 69, "duration": 0.5, "lyrics": "ki" },
+        { "swara": "N", "midi": 71, "duration": 0.5, "lyrics": "ya" },
+        { "swara": "S'", "midi": 72, "duration": 1, "lyrics": "hai" },
+        { "swara": "N", "midi": 71, "duration": 1 },
+        { "swara": "D", "midi": 69, "duration": 0.5 },
+        { "swara": "P", "midi": 67, "duration": 0.5 },
+        { "swara": "m", "midi": 65, "duration": 1 },
+        { "swara": "G", "midi": 64, "duration": 1, "lyrics": "Arz" },
+        { "swara": "m", "midi": 65, "duration": 0.5, "lyrics": "ki" },
+        { "swara": "P", "midi": 67, "duration": 0.5, "lyrics": "ya" },
+        { "swara": "D", "midi": 69, "duration": 1, "lyrics": "hai" },
+        { "swara": "P", "midi": 67, "duration": 1 },
+        { "swara": "m", "midi": 65, "duration": 0.5 },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 1 },
+        { "swara": "S", "midi": 60, "duration": 2, "lyrics": "..." }
+    ]
+}

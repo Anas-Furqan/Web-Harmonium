@@ -1,0 +1,283 @@
+/* Tutorial CSS - Tutorial Panel, Progress, Song List */
+
+/* Tutorial Browser */
+.tutorial-browser {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.tutorial-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+/* Tutorial List */
+.tutorial-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tutorial-list__empty {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+/* Tutorial Card */
+.tutorial-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--bg-body);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.tutorial-card:hover {
+    border-color: var(--color-primary);
+    background: #fff;
+}
+
+.tutorial-card__title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tutorial-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.tutorial-card__artist {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.tutorial-card__badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: var(--text-light);
+}
+
+.tutorial-card__badge--beginner {
+    background: var(--color-accent);
+}
+
+.tutorial-card__badge--intermediate {
+    background: var(--color-warning);
+    color: var(--text-primary);
+}
+
+.tutorial-card__badge--advanced {
+    background: var(--color-error);
+}
+
+/* Tutorial Player */
+.tutorial-player {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.tutorial-info {
+    text-align: center;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tutorial-info__title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tutorial-info__artist {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+/* Tutorial Progress */
+.tutorial-progress {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.progress-text {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Tutorial Hint */
+.tutorial-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #fff8dc 0%, #fffacd 100%);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-warning);
+}
+
+.hint-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.hint-note {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.hint-key {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+}
+
+/* Tutorial Lyrics */
+.tutorial-lyrics {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-primary);
+    min-height: 30px;
+}
+
+/* Tutorial Tempo */
+.tutorial-tempo {
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Tutorial Modes */
+.tutorial-modes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+}
+
+/* Tutorial Actions */
+.tutorial-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.tutorial-actions .btn {
+    flex: 1;
+}
+
+/* Tutorial Score */
+.tutorial-score {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-body);
+    border-radius: var(--border-radius);
+}
+
+.score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-item__value {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.score-item__value--correct {
+    color: var(--color-success);
+}
+
+.score-item__value--wrong {
+    color: var(--color-error);
+}
+
+.score-item__label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* Completion Modal */
+.completion-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--spacing-xl);
+    background: var(--bg-panel);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    z-index: 500;
+    animation: popup 0.3s ease-out;
+}
+
+@keyframes popup {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.completion-message__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-success);
+    margin-bottom: var(--spacing-md);
+}
+
+.completion-message__text {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .tutorial-list {
+        max-height: 200px;
+    }
+
+    .tutorial-hint {
+        padding: var(--spacing-sm);
+    }
+
+    .hint-note {
+        font-size: var(--font-size-lg);
+    }
+
+    .tutorial-modes {
+        gap: var(--spacing-sm);
+    }
+}

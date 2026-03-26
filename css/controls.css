@@ -1,0 +1,320 @@
+/* Controls CSS - Sliders, Toggles, Buttons */
+
+/* Control Groups */
+.control-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.control-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.control-value {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    min-width: 40px;
+}
+
+.control-value--center {
+    text-align: center;
+    min-width: 50px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-body);
+    border-radius: var(--border-radius-sm);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-light);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn:hover {
+    background-color: var(--color-primary-light);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn--small {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+    min-width: 32px;
+}
+
+.btn--secondary {
+    background-color: var(--text-muted);
+}
+
+.btn--secondary:hover {
+    background-color: var(--text-secondary);
+}
+
+.btn--ghost {
+    color: var(--color-primary);
+    background: transparent;
+    border: 1px solid var(--color-primary);
+}
+
+.btn--ghost:hover {
+    background: rgba(139, 69, 19, 0.1);
+}
+
+/* Range Slider */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Toggle Switch */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle__slider {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    background: var(--border-color);
+    border-radius: 13px;
+    transition: background var(--transition-normal);
+}
+
+.toggle__slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.toggle input:checked + .toggle__slider {
+    background: var(--color-accent);
+}
+
+.toggle input:checked + .toggle__slider::before {
+    transform: translateX(22px);
+}
+
+.toggle__label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* Select Dropdown */
+.select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.select:focus {
+    border-color: var(--color-primary);
+}
+
+.select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Radio Buttons */
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.radio-label input[type="radio"]:checked {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    box-shadow: inset 0 0 0 3px white;
+}
+
+/* Category Buttons */
+.category-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.category-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.category-btn--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--text-light);
+}
+
+/* Progress Bar */
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+    border-radius: 4px;
+    transition: width var(--transition-normal);
+    width: 0%;
+}
+
+/* Notation Display */
+.notation-display {
+    min-height: 100px;
+    padding: var(--spacing-md);
+    background: var(--bg-body);
+    border-radius: var(--border-radius);
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-size-lg);
+    line-height: 2;
+    word-wrap: break-word;
+}
+
+.notation-placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.notation-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .control-group {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .toggle__slider {
+        width: 40px;
+        height: 22px;
+    }
+
+    .toggle__slider::before {
+        width: 16px;
+        height: 16px;
+    }
+
+    .toggle input:checked + .toggle__slider::before {
+        transform: translateX(18px);
+    }
+}

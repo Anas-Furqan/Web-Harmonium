@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Web Harmonium - Learn to play harmonium with interactive tutorials">
+    <meta name="theme-color" content="#8B4513">
+
+    <title>Web Harmonium</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/tutorial.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">
+                <span class="header__icon">🎹</span>
+                <h1 class="header__title">Web Harmonium</h1>
+            </div>
+            <nav class="header__nav">
+                <button class="nav-btn nav-btn--active" data-panel="controls">Controls</button>
+                <button class="nav-btn" data-panel="tutorial">Tutorial</button>
+                <button class="nav-btn" data-panel="notation">Notation</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Side Panel -->
+            <aside class="side-panel">
+                <!-- Controls Panel -->
+                <section class="panel panel--controls" id="controls-panel">
+                    <h2 class="panel__title">Controls</h2>
+
+                    <div class="control-group">
+                        <label class="control-label" for="volume-slider">Volume</label>
+                        <div class="control-row">
+                            <input type="range" id="volume-slider" class="slider" min="0" max="100" value="70">
+                            <span class="control-value" id="volume-value">70%</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Reverb</label>
+                        <label class="toggle">
+                            <input type="checkbox" id="reverb-toggle">
+                            <span class="toggle__slider"></span>
+                            <span class="toggle__label" id="reverb-label">Off</span>
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Transpose</label>
+                        <div class="control-row">
+                            <button class="btn btn--small" id="transpose-down">-</button>
+                            <span class="control-value control-value--center" id="transpose-value">0</span>
+                            <button class="btn btn--small" id="transpose-up">+</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Octave</label>
+                        <div class="control-row">
+                            <button class="btn btn--small" id="octave-down">-</button>
+                            <span class="control-value control-value--center" id="octave-value">3</span>
+                            <button class="btn btn--small" id="octave-up">+</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Reed Stack</label>
+                        <div class="control-row">
+                            <button class="btn btn--small" id="reed-down">-</button>
+                            <span class="control-value control-value--center" id="reed-value">1</span>
+                            <button class="btn btn--small" id="reed-up">+</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="midi-select">MIDI Device</label>
+                        <select id="midi-select" class="select">
+                            <option value="">No MIDI devices</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Tutorial Panel -->
+                <section class="panel panel--tutorial hidden" id="tutorial-panel">
+                    <h2 class="panel__title">Tutorial</h2>
+
+                    <div class="tutorial-browser" id="tutorial-browser">
+                        <div class="tutorial-categories">
+                            <button class="category-btn category-btn--active" data-category="all">All</button>
+                            <button class="category-btn" data-category="practice">Practice</button>
+                            <button class="category-btn" data-category="indie">Indie</button>
+                            <button class="category-btn" data-category="bollywood">Bollywood</button>
+                        </div>
+                        <div class="tutorial-list" id="tutorial-list">
+                            <!-- Populated by JavaScript -->
+                            <p class="tutorial-list__empty">Loading tutorials...</p>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-player hidden" id="tutorial-player">
+                        <div class="tutorial-info">
+                            <h3 class="tutorial-info__title" id="tutorial-title">-</h3>
+                            <p class="tutorial-info__artist" id="tutorial-artist">-</p>
+                        </div>
+
+                        <div class="tutorial-progress">
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" id="progress-fill"></div>
+                            </div>
+                            <span class="progress-text" id="progress-text">0 / 0</span>
+                        </div>
+
+                        <div class="tutorial-hint">
+                            <span class="hint-label">Next:</span>
+                            <span class="hint-note" id="hint-note">-</span>
+                            <span class="hint-key" id="hint-key">-</span>
+                        </div>
+
+                        <div class="tutorial-lyrics" id="tutorial-lyrics">-</div>
+
+                        <div class="tutorial-tempo">
+                            <label class="control-label">Tempo</label>
+                            <div class="control-row">
+                                <button class="btn btn--small" id="tempo-down">-</button>
+                                <span class="control-value control-value--center" id="tempo-value">80 BPM</span>
+                                <button class="btn btn--small" id="tempo-up">+</button>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-modes">
+                            <label class="radio-label">
+                                <input type="radio" name="tutorial-mode" value="wait" checked>
+                                <span>Wait</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="tutorial-mode" value="autoplay">
+                                <span>Auto-play</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="tutorial-mode" value="practice">
+                                <span>Practice</span>
+                            </label>
+                        </div>
+
+                        <div class="tutorial-actions">
+                            <button class="btn" id="tutorial-restart">Restart</button>
+                            <button class="btn btn--secondary" id="tutorial-exit">Exit</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notation Panel -->
+                <section class="panel panel--notation hidden" id="notation-panel">
+                    <h2 class="panel__title">Notation</h2>
+                    <div class="notation-display" id="notation-display">
+                        <p class="notation-placeholder">Play notes to see swara notation...</p>
+                    </div>
+                    <div class="notation-actions">
+                        <button class="btn btn--small" id="notation-clear">Clear</button>
+                        <button class="btn btn--small" id="notation-copy">Copy</button>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Keyboard Area -->
+            <section class="keyboard-section">
+                <div class="keyboard-container" id="keyboard-container">
+                    <!-- SVG Keyboard rendered by JavaScript -->
+                </div>
+                <div class="keyboard-hints">
+                    <span class="hint">E=S</span>
+                    <span class="hint">R=R</span>
+                    <span class="hint">T=G</span>
+                    <span class="hint">Y=m</span>
+                    <span class="hint">U=P</span>
+                    <span class="hint">I=D</span>
+                    <span class="hint">O=N</span>
+                    <span class="hint">P=S'</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading harmonium...</p>
+        </div>
+
+        <!-- Audio Context Start Prompt -->
+        <div class="audio-prompt hidden" id="audio-prompt">
+            <div class="audio-prompt__content">
+                <p>Tap anywhere to enable audio</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (ES6 Modules) -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

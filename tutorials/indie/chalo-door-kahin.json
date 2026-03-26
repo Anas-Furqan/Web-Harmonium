@@ -1,0 +1,32 @@
+{
+    "id": "chalo-door-kahin",
+    "meta": {
+        "title": "Chalo Door Kahin",
+        "artist": "Samar Jafri",
+        "difficulty": "beginner",
+        "category": "indie",
+        "defaultTempo": 65,
+        "description": "Soothing melody perfect for beginners"
+    },
+    "sections": [
+        { "name": "Intro", "startIndex": 0 }
+    ],
+    "notes": [
+        { "swara": "S", "midi": 60, "duration": 1, "lyrics": "Cha" },
+        { "swara": "R", "midi": 62, "duration": 0.5, "lyrics": "lo" },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "door" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "ka" },
+        { "swara": "m", "midi": 65, "duration": 0.5, "lyrics": "hin" },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 1 },
+        { "swara": "G", "midi": 64, "duration": 1, "lyrics": "Cha" },
+        { "swara": "m", "midi": 65, "duration": 0.5, "lyrics": "lo" },
+        { "swara": "P", "midi": 67, "duration": 0.5 },
+        { "swara": "D", "midi": 69, "duration": 1, "lyrics": "door" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "ka" },
+        { "swara": "m", "midi": 65, "duration": 0.5, "lyrics": "hin" },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "S", "midi": 60, "duration": 2 }
+    ]
+}

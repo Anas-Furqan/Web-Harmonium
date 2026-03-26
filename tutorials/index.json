@@ -1,0 +1,63 @@
+{
+    "version": "1.0.0",
+    "lastUpdated": "2026-03-26",
+    "categories": [
+        {
+            "id": "practice",
+            "name": "Practice",
+            "description": "Scales and finger exercises"
+        },
+        {
+            "id": "indie",
+            "name": "Indie",
+            "description": "Anuv Jain, Samar Jafri style songs"
+        },
+        {
+            "id": "bollywood",
+            "name": "Bollywood",
+            "description": "Popular film melodies"
+        }
+    ],
+    "tutorials": [
+        {
+            "id": "scales",
+            "file": "practice/scales.json",
+            "category": "practice",
+            "difficulty": "beginner",
+            "title": "Basic Scales",
+            "artist": "Practice"
+        },
+        {
+            "id": "arz-kiya-hai",
+            "file": "indie/arz-kiya-hai.json",
+            "category": "indie",
+            "difficulty": "beginner",
+            "title": "Arz Kiya Hai",
+            "artist": "Anuv Jain"
+        },
+        {
+            "id": "chalo-door-kahin",
+            "file": "indie/chalo-door-kahin.json",
+            "category": "indie",
+            "difficulty": "beginner",
+            "title": "Chalo Door Kahin",
+            "artist": "Samar Jafri"
+        },
+        {
+            "id": "tum-hi-ho",
+            "file": "bollywood/tum-hi-ho.json",
+            "category": "bollywood",
+            "difficulty": "beginner",
+            "title": "Tum Hi Ho",
+            "artist": "Aashiqui 2"
+        },
+        {
+            "id": "kun-faya-kun",
+            "file": "bollywood/kun-faya-kun.json",
+            "category": "bollywood",
+            "difficulty": "intermediate",
+            "title": "Kun Faya Kun",
+            "artist": "Rockstar"
+        }
+    ]
+}

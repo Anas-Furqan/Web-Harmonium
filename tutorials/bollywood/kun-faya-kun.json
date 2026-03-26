@@ -1,0 +1,43 @@
+{
+    "id": "kun-faya-kun",
+    "meta": {
+        "title": "Kun Faya Kun",
+        "artist": "Rockstar",
+        "difficulty": "intermediate",
+        "category": "bollywood",
+        "defaultTempo": 60,
+        "description": "Soulful Sufi melody from Rockstar"
+    },
+    "sections": [
+        { "name": "Opening", "startIndex": 0 },
+        { "name": "Main Theme", "startIndex": 8 }
+    ],
+    "notes": [
+        { "swara": "P", "midi": 67, "duration": 1 },
+        { "swara": "D", "midi": 69, "duration": 0.5 },
+        { "swara": "N", "midi": 71, "duration": 0.5 },
+        { "swara": "S'", "midi": 72, "duration": 1, "lyrics": "Kun" },
+        { "swara": "N", "midi": 71, "duration": 0.5 },
+        { "swara": "D", "midi": 69, "duration": 0.5 },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "fa" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "ya" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "kun" },
+        { "swara": "P", "midi": 67, "duration": 0.5 },
+        { "swara": "D", "midi": 69, "duration": 0.5 },
+        { "swara": "P", "midi": 67, "duration": 1 },
+        { "swara": "m", "midi": 65, "duration": 0.5 },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 1 },
+        { "swara": "S", "midi": 60, "duration": 1 },
+        { "swara": "R", "midi": 62, "duration": 0.5, "lyrics": "Kun" },
+        { "swara": "G", "midi": 64, "duration": 0.5, "lyrics": "fa" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "ya" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "kun" },
+        { "swara": "D", "midi": 69, "duration": 0.5 },
+        { "swara": "P", "midi": 67, "duration": 0.5 },
+        { "swara": "m", "midi": 65, "duration": 1 },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 0.5 },
+        { "swara": "S", "midi": 60, "duration": 2 }
+    ]
+}

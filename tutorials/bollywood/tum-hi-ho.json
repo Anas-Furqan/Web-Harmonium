@@ -1,0 +1,38 @@
+{
+    "id": "tum-hi-ho",
+    "meta": {
+        "title": "Tum Hi Ho",
+        "artist": "Aashiqui 2",
+        "difficulty": "beginner",
+        "category": "bollywood",
+        "defaultTempo": 75,
+        "description": "Iconic melody from the romantic blockbuster"
+    },
+    "sections": [
+        { "name": "Intro/Hook", "startIndex": 0 }
+    ],
+    "notes": [
+        { "swara": "S", "midi": 60, "duration": 1, "lyrics": "Tum" },
+        { "swara": "R", "midi": 62, "duration": 0.5, "lyrics": "hi" },
+        { "swara": "G", "midi": 64, "duration": 0.5, "lyrics": "ho" },
+        { "swara": "G", "midi": 64, "duration": 1 },
+        { "swara": "m", "midi": 65, "duration": 0.5 },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 1 },
+        { "swara": "S", "midi": 60, "duration": 1, "lyrics": "Tum" },
+        { "swara": "R", "midi": 62, "duration": 0.5, "lyrics": "hi" },
+        { "swara": "G", "midi": 64, "duration": 0.5, "lyrics": "ho" },
+        { "swara": "m", "midi": 65, "duration": 1 },
+        { "swara": "P", "midi": 67, "duration": 0.5 },
+        { "swara": "m", "midi": 65, "duration": 0.5 },
+        { "swara": "G", "midi": 64, "duration": 1 },
+        { "swara": "R", "midi": 62, "duration": 0.5, "lyrics": "Ab" },
+        { "swara": "G", "midi": 64, "duration": 0.5, "lyrics": "tum" },
+        { "swara": "m", "midi": 65, "duration": 1, "lyrics": "hi" },
+        { "swara": "P", "midi": 67, "duration": 1, "lyrics": "ho" },
+        { "swara": "m", "midi": 65, "duration": 0.5 },
+        { "swara": "G", "midi": 64, "duration": 0.5 },
+        { "swara": "R", "midi": 62, "duration": 1 },
+        { "swara": "S", "midi": 60, "duration": 2 }
+    ]
+}

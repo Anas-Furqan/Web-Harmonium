@@ -1,0 +1,180 @@
+/* Keyboard CSS - SVG Key Styling and Animations */
+
+/* Keyboard SVG Container */
+.harmonium-keyboard {
+    width: 100%;
+    height: auto;
+    max-height: var(--keyboard-height);
+    display: block;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Base Key Styles */
+.key {
+    cursor: pointer;
+    transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.key:focus {
+    outline: 2px solid var(--color-warning);
+    outline-offset: 2px;
+}
+
+/* White Keys */
+.key--white {
+    fill: #FFFFF0;
+    stroke: #c0b8a0;
+    stroke-width: 1;
+}
+
+.key--white:hover {
+    fill: #f5f5dc;
+}
+
+/* Black Keys */
+.key--black {
+    fill: #1a1a1a;
+    stroke: #333;
+    stroke-width: 1;
+}
+
+.key--black:hover {
+    fill: #2a2a2a;
+}
+
+/* Key Pressed State */
+.key--pressed {
+    filter: brightness(0.8);
+    transform: translateY(2px);
+}
+
+.key--white.key--pressed {
+    fill: #e8e8d0;
+}
+
+.key--black.key--pressed {
+    fill: #0a0a0a;
+}
+
+/* Tutorial Hint Highlight */
+.key--hint {
+    animation: hint-pulse 1s ease-in-out infinite;
+}
+
+.key--white.key--hint {
+    stroke: var(--color-warning) !important;
+    stroke-width: 3px !important;
+}
+
+.key--black.key--hint {
+    stroke: var(--color-warning) !important;
+    stroke-width: 3px !important;
+}
+
+@keyframes hint-pulse {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 4px rgba(255, 215, 0, 0.5));
+    }
+    50% {
+        filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+    }
+}
+
+/* Correct Note Feedback */
+.key--correct {
+    animation: correct-flash 0.3s ease-out;
+}
+
+.key--white.key--correct {
+    fill: var(--color-success) !important;
+}
+
+.key--black.key--correct {
+    fill: var(--color-accent-light) !important;
+}
+
+@keyframes correct-flash {
+    0% {
+        filter: brightness(1.5);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* Wrong Note Feedback */
+.key--wrong {
+    animation: wrong-flash 0.3s ease-out;
+}
+
+.key--white.key--wrong {
+    fill: var(--color-error) !important;
+}
+
+.key--black.key--wrong {
+    fill: #ff6b6b !important;
+}
+
+@keyframes wrong-flash {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* Swara Labels on Keys */
+.key-label {
+    pointer-events: none;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    user-select: none;
+}
+
+.key-label--white {
+    fill: #666;
+}
+
+.key-label--black {
+    fill: #ccc;
+}
+
+/* Show labels in tutorial mode */
+.keyboard--tutorial .key-label {
+    opacity: 1;
+}
+
+/* Keyboard Background */
+.keyboard-bg {
+    fill: var(--bg-keyboard);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .key-label {
+        font-size: 10px;
+    }
+
+    .key--white {
+        stroke-width: 0.5;
+    }
+
+    .key--black {
+        stroke-width: 0.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .key-label {
+        display: none;
+    }
+}
