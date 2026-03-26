@@ -15,11 +15,21 @@ const PRECACHE_URLS = [
     '/js/utils/EventBus.js',
     '/js/utils/StateManager.js',
     '/js/audio/AudioEngine.js',
+    '/js/audio/MidiHandler.js',
     '/js/keyboard/KeyboardRenderer.js',
     '/js/keyboard/KeyboardController.js',
     '/js/keyboard/KeyHighlighter.js',
+    '/js/tutorial/TutorialEngine.js',
+    '/js/tutorial/TutorialUI.js',
+    '/js/tutorial/TutorialPlayer.js',
+    '/js/notation/SwaraMapper.js',
+    '/js/notation/NotationDisplay.js',
     '/tutorials/index.json',
-    '/tutorials/practice/scales.json'
+    '/tutorials/practice/scales.json',
+    '/tutorials/indie/arz-kiya-hai.json',
+    '/tutorials/indie/chalo-door-kahin.json',
+    '/tutorials/bollywood/tum-hi-ho.json',
+    '/tutorials/bollywood/kun-faya-kun.json'
 ];
 
 // Install: precache essential resources

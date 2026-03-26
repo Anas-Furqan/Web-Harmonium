@@ -3,16 +3,26 @@
 import { state } from './utils/StateManager.js';
 import { eventBus, EVENTS } from './utils/EventBus.js';
 import { AudioEngine } from './audio/AudioEngine.js';
+import { MidiHandler } from './audio/MidiHandler.js';
 import { KeyboardRenderer } from './keyboard/KeyboardRenderer.js';
 import { KeyboardController } from './keyboard/KeyboardController.js';
 import { KeyHighlighter } from './keyboard/KeyHighlighter.js';
+import { TutorialEngine } from './tutorial/TutorialEngine.js';
+import { TutorialUI } from './tutorial/TutorialUI.js';
+import { TutorialPlayer } from './tutorial/TutorialPlayer.js';
+import { NotationDisplay } from './notation/NotationDisplay.js';
 
 class WebHarmoniumApp {
     constructor() {
         this.audio = null;
+        this.midi = null;
         this.renderer = null;
         this.controller = null;
         this.highlighter = null;
+        this.tutorialEngine = null;
+        this.tutorialUI = null;
+        this.tutorialPlayer = null;
+        this.notationDisplay = null;
         this.isInitialized = false;
     }
 
@@ -35,6 +45,13 @@ class WebHarmoniumApp {
 
         // Create highlighter
         this.highlighter = new KeyHighlighter(this.renderer);
+
+        // Create tutorial engine (before audio init for catalog loading)
+        this.tutorialEngine = new TutorialEngine(this.highlighter);
+
+        // Create tutorial UI
+        this.tutorialUI = new TutorialUI(this.tutorialEngine);
+        this.tutorialUI.init();
 
         // Wait for user gesture to initialize audio
         this.showAudioPrompt();
@@ -78,6 +95,25 @@ class WebHarmoniumApp {
                 );
                 this.controller.init();
 
+                // Setup tutorial validation callback
+                this.controller.setNoteOnCallback((midiNote, swara) => {
+                    if (this.tutorialEngine?.active) {
+                        this.tutorialEngine.validateNote(midiNote);
+                    }
+                });
+
+                // Create tutorial player
+                this.tutorialPlayer = new TutorialPlayer(
+                    this.tutorialEngine,
+                    this.audio,
+                    this.highlighter
+                );
+                this.tutorialPlayer.init();
+
+                // Initialize MIDI handler
+                this.midi = new MidiHandler(this.audio, this.controller);
+                await this.midi.init();
+
                 // Hide prompt
                 audioPrompt?.classList.add('hidden');
 
@@ -85,10 +121,14 @@ class WebHarmoniumApp {
                 this.updateControlsUI();
 
                 this.isInitialized = true;
+                eventBus.emit(EVENTS.LOADING_COMPLETE);
                 console.log('Web Harmonium ready!');
             } else {
                 console.error('Failed to initialize audio');
-                audioPrompt.querySelector('p').textContent = 'Audio initialization failed. Please refresh.';
+                const content = audioPrompt?.querySelector('p') || audioPrompt?.querySelector('.audio-prompt__content p');
+                if (content) {
+                    content.textContent = 'Audio initialization failed. Please refresh.';
+                }
             }
 
             // Remove listeners
@@ -207,13 +247,21 @@ class WebHarmoniumApp {
         const octave = state.get('audio.octave');
         const reedStack = state.get('audio.reedStack');
 
-        document.getElementById('volume-slider').value = volume;
-        document.getElementById('volume-value').textContent = `${volume}%`;
-        document.getElementById('reverb-toggle').checked = reverb;
-        document.getElementById('reverb-label').textContent = reverb ? 'On' : 'Off';
-        document.getElementById('transpose-value').textContent = transpose;
-        document.getElementById('octave-value').textContent = octave;
-        document.getElementById('reed-value').textContent = reedStack;
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeDisplay = document.getElementById('volume-value');
+        const reverbToggle = document.getElementById('reverb-toggle');
+        const reverbLabel = document.getElementById('reverb-label');
+        const transposeDisplay = document.getElementById('transpose-value');
+        const octaveDisplay = document.getElementById('octave-value');
+        const reedDisplay = document.getElementById('reed-value');
+
+        if (volumeSlider) volumeSlider.value = volume;
+        if (volumeDisplay) volumeDisplay.textContent = `${volume}%`;
+        if (reverbToggle) reverbToggle.checked = reverb;
+        if (reverbLabel) reverbLabel.textContent = reverb ? 'On' : 'Off';
+        if (transposeDisplay) transposeDisplay.textContent = transpose;
+        if (octaveDisplay) octaveDisplay.textContent = octave;
+        if (reedDisplay) reedDisplay.textContent = reedStack;
     }
 
     /**
@@ -242,7 +290,15 @@ class WebHarmoniumApp {
                     }
                 });
 
+                // Enable tutorial mode on keyboard when tutorial panel is active
+                if (panelId === 'tutorial') {
+                    this.renderer?.enableTutorialMode();
+                } else {
+                    this.renderer?.disableTutorialMode();
+                }
+
                 state.set('ui.currentPanel', panelId);
+                eventBus.emit(EVENTS.PANEL_CHANGE, panelId);
             });
         });
     }
@@ -251,21 +307,13 @@ class WebHarmoniumApp {
      * Setup notation display
      */
     setupNotation() {
-        const display = document.getElementById('notation-display');
+        const displayElement = document.getElementById('notation-display');
         const clearBtn = document.getElementById('notation-clear');
         const copyBtn = document.getElementById('notation-copy');
 
-        // Update display when notation changes
-        eventBus.on(EVENTS.NOTATION_ADD, () => {
-            const notation = state.getNotationString();
-            if (notation) {
-                display.innerHTML = `<span class="notation-text">${notation}</span>`;
-            }
-        });
-
-        eventBus.on(EVENTS.NOTATION_CLEAR, () => {
-            display.innerHTML = '<p class="notation-placeholder">Play notes to see swara notation...</p>';
-        });
+        // Create notation display module
+        this.notationDisplay = new NotationDisplay(displayElement);
+        this.notationDisplay.init();
 
         // Clear button
         clearBtn?.addEventListener('click', () => {

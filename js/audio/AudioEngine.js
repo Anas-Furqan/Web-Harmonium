@@ -58,7 +58,7 @@ export class AudioEngine {
     async loadSample() {
         try {
             // Try to load from samples folder, fall back to generating a tone
-            const response = await fetch('samples/harmonium/harmonium.mp3');
+            const response = await fetch('samples/harmonium/harmonium.wav');
             if (response.ok) {
                 const arrayBuffer = await response.arrayBuffer();
                 this.sampleBuffer = await this.context.decodeAudioData(arrayBuffer);
@@ -117,20 +117,12 @@ export class AudioEngine {
     async loadReverb() {
         try {
             this.convolver = this.context.createConvolver();
-
-            const response = await fetch('samples/fx/reverb.mp3');
-            if (response.ok) {
-                const arrayBuffer = await response.arrayBuffer();
-                this.convolver.buffer = await this.context.decodeAudioData(arrayBuffer);
-            } else {
-                // Generate simple reverb
-                this.convolver.buffer = this.generateReverbImpulse();
-            }
-
+            // Use generated reverb impulse (no external file needed)
+            this.convolver.buffer = this.generateReverbImpulse();
             this.convolver.connect(this.reverbGain);
-            console.log('Reverb loaded');
+            console.log('Reverb initialized');
         } catch (error) {
-            console.warn('Could not load reverb:', error);
+            console.warn('Could not initialize reverb:', error);
             this.convolver = null;
         }
     }
